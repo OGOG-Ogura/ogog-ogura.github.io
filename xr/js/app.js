@@ -86,7 +86,10 @@ window.ARWT.onButtonClicked = () => {
             //     }
             // ]
         }
-        navigator.xr.requestSession('immersive-ar', options).then(onSessionStarted, onRequestSessionError);
+        navigator.xr.requestSession('immersive-ar').then((session) => {
+			session.isImmersive = true;
+			onSessionStarted(session)
+		});
     }else{
         xrSession.end();
     }
