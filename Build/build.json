@@ -3,7 +3,7 @@
 "productName": "ARWT_OldWebAR",
 "productVersion": "0.1",
 "dataUrl": "Build.data.unityweb",
-"wasmCodeUrl": "Build.wasm.code.unityweb",
+"wasmCodeUrl": "Build.wasm",
 "wasmFrameworkUrl": "Build.wasm.framework.unityweb",
 "graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
 "webglContextAttributes": {"preserveDrawingBuffer": false},
