@@ -82,58 +82,6 @@ function SendMessage(gameObject, func, param) {
  if (param === undefined) Module.ccall("SendMessage", null, [ "string", "string" ], [ gameObject, func ]); else if (typeof param === "string") Module.ccall("SendMessageString", null, [ "string", "string", "string" ], [ gameObject, func, param ]); else if (typeof param === "number") Module.ccall("SendMessageFloat", null, [ "string", "string", "number" ], [ gameObject, func, param ]); else throw "" + param + " is does not have a type which is supported by SendMessage.";
 }
 Module["SendMessage"] = SendMessage;
-setTimeout((function() {
- Module["InternalBrowser"] = Browser || {};
- if (GL && GL.createContext) {
-  GL.createContextOld = GL.createContext;
-  GL.createContext = (function(canvas, webGLContextAttributes) {
-   var contextAttributes = {
-    xrCompatible: true
-   };
-   if (webGLContextAttributes) {
-    for (var attribute in webGLContextAttributes) {
-     contextAttributes[attribute] = webGLContextAttributes[attribute];
-    }
-   }
-   return GL.createContextOld(canvas, contextAttributes);
-  });
- }
-}), 0);
-Module["WebXR"] = Module["WebXR"] || {};
-Module.WebXR.setCameraProvider = (function(name) {
- Module.WebXR.isCameraReady = true;
- Module.WebXR.cameraProvider = name;
- Module.WebXR.camera = {};
- Module.WebXR.camera.setProjection = "setProjection";
- Module.WebXR.camera.setPosition = "setPosition";
- Module.WebXR.camera.setRotation = "setRotation";
-});
-Module.WebXR.setHitProvider = (function(name) {
- Module.WebXR.isHitProviderReady = true;
- Module.WebXR.hitProvider = name;
- Module.WebXR.hit = {};
- Module.WebXR.hit.setHit = "setHit";
-});
-Module.WebXR.enableImageTracking = (function(value) {
- Module.WebXR.imageTrackingRequired = value;
-});
-Module.WebXR.setImageTrackingProvider = (function(name) {
- Module.WebXR.isImageTrackingProviderReady = true;
- Module.WebXR.imageTrackingProvider = name;
- Module.WebXR.imageTracking = Module.WebXR.imageTracking || {};
- Module.WebXR.imageTracking.images = [];
- Module.WebXR.imageTracking.setTrackedImage = "setTrackedImage";
-});
-Module.WebXR.addTrackableImage = (function(name, width, height) {
- Module.WebXR.imageTracking.images.push({
-  name: name,
-  width: width,
-  height: height
- });
-});
-Module.WebXR.onButtonClicked = (function(name) {
- window.ARWT.onButtonClicked();
-});
 var moduleOverrides = {};
 var key;
 for (key in Module) {
@@ -1336,7 +1284,7 @@ function _emscripten_asm_const_id(code, a0) {
  return ASM_CONSTS[code](a0);
 }
 STATIC_BASE = GLOBAL_BASE;
-STATICTOP = STATIC_BASE + 3012208;
+STATICTOP = STATIC_BASE + 2973536;
 __ATINIT__.push({
  func: (function() {
   __GLOBAL__sub_I_AccessibilityScriptingClasses_cpp();
@@ -3199,6 +3147,10 @@ __ATINIT__.push({
  })
 }, {
  func: (function() {
+  __GLOBAL__sub_I_Il2CppCodeRegistration_cpp();
+ })
+}, {
+ func: (function() {
   __GLOBAL__sub_I_Lump_libil2cpp_vm_cpp();
  })
 }, {
@@ -3215,14 +3167,10 @@ __ATINIT__.push({
  })
 }, {
  func: (function() {
-  __GLOBAL__sub_I_Il2CppCodeRegistration_cpp();
- })
-}, {
- func: (function() {
   ___emscripten_environ_constructor();
  })
 });
-var STATIC_BUMP = 3012208;
+var STATIC_BUMP = 2973536;
 Module["STATIC_BASE"] = STATIC_BASE;
 Module["STATIC_BUMP"] = STATIC_BUMP;
 var tempDoublePtr = STATICTOP;
@@ -8969,9 +8917,6 @@ function ___unlock() {}
 function _abort() {
  Module["abort"]();
 }
-function _addTrackableImage(name, width, height) {
- Module.WebXR.addTrackableImage(Pointer_stringify(name), width, height);
-}
 function _atexit(func, arg) {
  warnOnce("atexit() called, but NO_EXIT_RUNTIME is set, so atexits() will not be called. set NO_EXIT_RUNTIME to 0 (see the FAQ)");
  __ATEXIT__.unshift({
@@ -11823,9 +11768,6 @@ function _emscripten_webgl_make_context_current(contextHandle) {
  var success = GL.makeContextCurrent(contextHandle);
  return success ? 0 : -5;
 }
-function _enableImageTracking(value) {
- Module.WebXR.enableImageTracking(value);
-}
 function __exit(status) {
  exit(status);
 }
@@ -13661,11 +13603,6 @@ function _inet_addr(ptr) {
  }
  return addr;
 }
-function _initUnity() {
- document.dispatchEvent(new CustomEvent("UnityLoaded", {
-  detail: "Ready"
- }));
-}
 var _llvm_ceil_f32 = Math_ceil;
 var _llvm_ceil_f64 = Math_ceil;
 function _llvm_copysign_f64(x, y) {
@@ -13826,15 +13763,6 @@ function _pthread_setspecific(key, value) {
 function _sched_yield() {
  return 0;
 }
-function _setCameraProvider(name) {
- Module.WebXR.setCameraProvider(Pointer_stringify(name));
-}
-function _setHitProvider(name) {
- Module.WebXR.setHitProvider(Pointer_stringify(name));
-}
-function _setImageTrackingProvider(name) {
- Module.WebXR.setImageTrackingProvider(Pointer_stringify(name));
-}
 function _setenv(envname, envval, overwrite) {
  if (envname === 0) {
   ___setErrNo(ERRNO_CODES.EINVAL);
@@ -13858,9 +13786,6 @@ function _sigaction(signum, act, oldact) {
 function _sigemptyset(set) {
  HEAP32[set >> 2] = 0;
  return 0;
-}
-function _startXR() {
- Module.WebXR.onButtonClicked();
 }
 function __isLeapYear(year) {
  return year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
@@ -15142,16 +15067,6 @@ function nullFunc_vfi(x) {
  err("Build with ASSERTIONS=2 for more info.");
  abort(x);
 }
-function nullFunc_vfii(x) {
- err("Invalid function pointer called with signature 'vfii'. Perhaps this is an invalid value (e.g. caused by calling a virtual method on a NULL pointer)? Or calling a function with an incorrect type, which will fail? (it is worth building your source files with -Werror (warnings are errors), as warnings can indicate undefined behavior which can cause this)");
- err("Build with ASSERTIONS=2 for more info.");
- abort(x);
-}
-function nullFunc_vfiii(x) {
- err("Invalid function pointer called with signature 'vfiii'. Perhaps this is an invalid value (e.g. caused by calling a virtual method on a NULL pointer)? Or calling a function with an incorrect type, which will fail? (it is worth building your source files with -Werror (warnings are errors), as warnings can indicate undefined behavior which can cause this)");
- err("Build with ASSERTIONS=2 for more info.");
- abort(x);
-}
 function nullFunc_vi(x) {
  err("Invalid function pointer called with signature 'vi'. Perhaps this is an invalid value (e.g. caused by calling a virtual method on a NULL pointer)? Or calling a function with an incorrect type, which will fail? (it is worth building your source files with -Werror (warnings are errors), as warnings can indicate undefined behavior which can cause this)");
  err("Build with ASSERTIONS=2 for more info.");
@@ -15677,8 +15592,8 @@ function nullFunc_vjji(x) {
  err("Build with ASSERTIONS=2 for more info.");
  abort(x);
 }
-Module["wasmTableSize"] = 67162;
-Module["wasmMaxTableSize"] = 67162;
+Module["wasmTableSize"] = 67142;
+Module["wasmMaxTableSize"] = 67142;
 function invoke_dddi(index, a1, a2, a3) {
  var sp = stackSave();
  try {
@@ -17129,26 +17044,6 @@ function invoke_vfi(index, a1, a2) {
   Module["setThrew"](1, 0);
  }
 }
-function invoke_vfii(index, a1, a2, a3) {
- var sp = stackSave();
- try {
-  Module["dynCall_vfii"](index, a1, a2, a3);
- } catch (e) {
-  stackRestore(sp);
-  if (typeof e !== "number" && e !== "longjmp") throw e;
-  Module["setThrew"](1, 0);
- }
-}
-function invoke_vfiii(index, a1, a2, a3, a4) {
- var sp = stackSave();
- try {
-  Module["dynCall_vfiii"](index, a1, a2, a3, a4);
- } catch (e) {
-  stackRestore(sp);
-  if (typeof e !== "number" && e !== "longjmp") throw e;
-  Module["setThrew"](1, 0);
- }
-}
 function invoke_vi(index, a1) {
  var sp = stackSave();
  try {
@@ -18352,8 +18247,6 @@ Module.asmLibraryArg = {
  "nullFunc_vffffi": nullFunc_vffffi,
  "nullFunc_vffi": nullFunc_vffi,
  "nullFunc_vfi": nullFunc_vfi,
- "nullFunc_vfii": nullFunc_vfii,
- "nullFunc_vfiii": nullFunc_vfiii,
  "nullFunc_vi": nullFunc_vi,
  "nullFunc_vid": nullFunc_vid,
  "nullFunc_vidd": nullFunc_vidd,
@@ -18604,8 +18497,6 @@ Module.asmLibraryArg = {
  "invoke_vffffi": invoke_vffffi,
  "invoke_vffi": invoke_vffi,
  "invoke_vfi": invoke_vfi,
- "invoke_vfii": invoke_vfii,
- "invoke_vfiii": invoke_vfiii,
  "invoke_vi": invoke_vi,
  "invoke_vid": invoke_vid,
  "invoke_vidd": invoke_vidd,
@@ -18862,7 +18753,6 @@ Module.asmLibraryArg = {
  "__setLetterbox": __setLetterbox,
  "__write_sockaddr": __write_sockaddr,
  "_abort": _abort,
- "_addTrackableImage": _addTrackableImage,
  "_atexit": _atexit,
  "_clock": _clock,
  "_clock_getres": _clock_getres,
@@ -18930,7 +18820,6 @@ Module.asmLibraryArg = {
  "_emscripten_webgl_get_current_context": _emscripten_webgl_get_current_context,
  "_emscripten_webgl_init_context_attributes": _emscripten_webgl_init_context_attributes,
  "_emscripten_webgl_make_context_current": _emscripten_webgl_make_context_current,
- "_enableImageTracking": _enableImageTracking,
  "_exit": _exit,
  "_flock": _flock,
  "_getenv": _getenv,
@@ -19104,7 +18993,6 @@ Module.asmLibraryArg = {
  "_gmtime": _gmtime,
  "_gmtime_r": _gmtime_r,
  "_inet_addr": _inet_addr,
- "_initUnity": _initUnity,
  "_llvm_ceil_f32": _llvm_ceil_f32,
  "_llvm_ceil_f64": _llvm_ceil_f64,
  "_llvm_copysign_f64": _llvm_copysign_f64,
@@ -19141,13 +19029,9 @@ Module.asmLibraryArg = {
  "_pthread_once": _pthread_once,
  "_pthread_setspecific": _pthread_setspecific,
  "_sched_yield": _sched_yield,
- "_setCameraProvider": _setCameraProvider,
- "_setHitProvider": _setHitProvider,
- "_setImageTrackingProvider": _setImageTrackingProvider,
  "_setenv": _setenv,
  "_sigaction": _sigaction,
  "_sigemptyset": _sigemptyset,
- "_startXR": _startXR,
  "_strftime": _strftime,
  "_sysconf": _sysconf,
  "_time": _time,
@@ -25622,16 +25506,6 @@ var dynCall_vfi = Module["dynCall_vfi"] = (function() {
  assert(runtimeInitialized, "you need to wait for the runtime to be ready (e.g. wait for main() to be called)");
  assert(!runtimeExited, "the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)");
  return Module["asm"]["dynCall_vfi"].apply(null, arguments);
-});
-var dynCall_vfii = Module["dynCall_vfii"] = (function() {
- assert(runtimeInitialized, "you need to wait for the runtime to be ready (e.g. wait for main() to be called)");
- assert(!runtimeExited, "the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)");
- return Module["asm"]["dynCall_vfii"].apply(null, arguments);
-});
-var dynCall_vfiii = Module["dynCall_vfiii"] = (function() {
- assert(runtimeInitialized, "you need to wait for the runtime to be ready (e.g. wait for main() to be called)");
- assert(!runtimeExited, "the runtime was exited (use NO_EXIT_RUNTIME to keep it alive after main() exits)");
- return Module["asm"]["dynCall_vfiii"].apply(null, arguments);
 });
 var dynCall_vi = Module["dynCall_vi"] = (function() {
  assert(runtimeInitialized, "you need to wait for the runtime to be ready (e.g. wait for main() to be called)");
