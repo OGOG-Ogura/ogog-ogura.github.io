@@ -87,6 +87,8 @@ window.ARWT.onButtonClicked = () => {
             // ]
         }
         navigator.xr.requestSession('immersive-ar').then((session) => {
+			session.requiredFeatures = ['local-floor', 'image-tracking'];
+			session.trackedImages = imgsBitmap;
 			session.isImmersive = true;
 			onSessionStarted(session)
 		});
