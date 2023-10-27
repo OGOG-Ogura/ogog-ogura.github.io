@@ -3,26 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta name="twitter:card" content="summary">
-<meta name="Twitter:site" content="@OGOG_Ogura">
-<meta property="og:title" content="ペロロジラゲーム">
-<meta property="og:description" content="モモフレンズ同士をくっつけて遊ぼう！【※ブルーアーカイブ二次創作作品です】">
-<meta name="og:image" property="og:image" content="https://ogog-ogura.github.io/momofriends/img/card.jpg">
-<meta name="twitter:image" property="twitter:image" content="https://ogog-ogura.github.io/momofriends/img/card.jpg">
-<meta property="og:url" content="https://ogog-ogura.github.io/momofriends/">
-    <title>ペロロジラゲーム Perorozilla Game</title>
+    <title>Unity WebGL Player | MomoFriendsGame</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z82767VW9P"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-Z82767VW9P');
-</script>
   <body>
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=1280 height=720 tabindex="-1"></canvas>
@@ -36,10 +20,8 @@
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Perorozilla Game</div>
+        <div id="unity-build-title">MomoFriendsGame</div>
       </div>
-	  <div id="sns">1230点以上をめざそう！ 2000点取れたらすごい！ ハロウィン版ではごく低確率で高得点のチャンスが訪れるかも…？
-		<br><a href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fogog-ogura.github.io%2Fmomofriends%2F%0A%23%E3%83%9A%E3%83%AD%E3%83%AD%E3%82%B8%E3%83%A9%E3%82%B2%E3%83%BC%E3%83%A0" target="_blank">X(旧Twitter)でシェア</a>　<a href="https://twitter.com/OGOG_Ogura" target="_blank">作った人：おぐら(@OGOG_Ogura)</a>　　<a href="https://ogog-ogura.github.io/momofriends/original/" target="_blank">ふつうのスキンで遊ぶ</a>　　<a href="https://store-jp.nintendo.com/list/software/70010000043363.html" target="_blank">元ネタのスイカゲーム</a></div>
     </div>
     <script>
 
@@ -75,11 +57,11 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/momofriends.loader.js";
+      var loaderUrl = buildUrl + "/halloween.loader.js";
       var config = {
-        dataUrl: buildUrl + "/momofriends.data.unityweb",
-        frameworkUrl: buildUrl + "/momofriends.framework.js.unityweb",
-        codeUrl: buildUrl + "/momofriends.wasm.unityweb",
+        dataUrl: buildUrl + "/halloween.data.unityweb",
+        frameworkUrl: buildUrl + "/halloween.framework.js.unityweb",
+        codeUrl: buildUrl + "/halloween.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "OguLabo",
         productName: "MomoFriendsGame",
