@@ -1,9 +1,9 @@
 const cacheName = "OguLabo-VRM_AcchiMuite_Hoi-2023.11.27";
 const contentToCache = [
     "Build/hoi.loader.js",
-    "Build/hoi.framework.js.br",
-    "Build/hoi.data.br",
-    "Build/hoi.wasm.br",
+    "Build/hoi.framework.js",
+    "Build/hoi.data",
+    "Build/hoi.wasm",
     "TemplateData/style.css"
 
 ];
