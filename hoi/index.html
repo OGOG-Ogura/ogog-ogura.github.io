@@ -103,14 +103,15 @@
       loadingBar.style.display = "block";
 
       var script = document.createElement("script");
-	  var unityInstance = null;
+	  var gameInstance = null;
       script.src = loaderUrl;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
           loadingBar.style.display = "none";
-		  window.unityInstance = unityInstance;
+		  gameInstance = unityInstance;
+		  window.gameInstance = unityInstance;
         }).catch((message) => {
           alert(message);
         });
