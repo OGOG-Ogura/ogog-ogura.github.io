@@ -103,6 +103,7 @@
       loadingBar.style.display = "block";
 
       var script = document.createElement("script");
+	  var unityInstance = null;
       script.src = loaderUrl;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
