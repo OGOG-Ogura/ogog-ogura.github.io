@@ -1,13 +1,13 @@
 {
-    "name": "VRM_AcchiMuite_Hoi",
-    "short_name": "VRM_AcchiMuite_Hoi",
+    "name": "私とあっちむいてホイ！",
+    "short_name": "わたほい",
     "start_url": "index.html",
     "display": "fullscreen",
     "background_color": "#F8F8F8",
     "theme_color": "#fff",
-    "description": "あっちむいてホイ！",
+    "description": "あの子とあっちむいてホイで遊ぼう！",
     "icons": [{
-      "src": "TemplateData/icons/unity-logo-light.png",
+      "src": "TemplateData/icons/ogp-hoi_icon.png",
       "sizes": "144x144",
       "type": "image/png",
       "purpose": "any maskable"
