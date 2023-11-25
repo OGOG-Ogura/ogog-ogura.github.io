@@ -7,7 +7,7 @@
     "theme_color": "#fff",
     "description": "あの子とあっちむいてホイで遊ぼう！",
     "icons": [{
-      "src": "TemplateData/icons/ogp-hoi_icon.png",
+      "src": "TemplateData/icons/ogp_hoi_icon.png",
       "sizes": "144x144",
       "type": "image/png",
       "purpose": "any maskable"
