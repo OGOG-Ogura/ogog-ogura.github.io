@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content='width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, shrink-to-fit=yes'>
-    <title>Unity WebGL Player | ARComic202408</title>
+    <title>ARパート03 -お姉ちゃんを連れ戻せ!!-</title>
     <link rel="stylesheet" href="TemplateData/style.css">
     <style>
         html{
@@ -43,8 +43,11 @@
     <canvas id="video-canvas" style="width:100%; height:100%; object-fit:cover; position:absolute"></canvas>
     <div id="startARDiv" class="ctaDiv">
         <select id="chooseCamSel" style="display: none;" onchange="SelectCam()"></select>
-        <p style="text-align: center; width:60vw;">This augmented reality experience requires access to your device's camera</p>
-        <button id="startARButton" onclick="StartAR()" style="display:none">ALLOW ACCESS</button>
+        <p  style="text-align: center;">
+            <img src="arona_s.png" alt="arona">
+        </p>
+        <p style="text-align: center; width:60vw;">こちらが最後のARページとなります！端末のカメラへのアクセスを許可して、モモイさんを探しましょう！</p>
+        <button id="startARButton" onclick="StartAR()" style="display:none">アクセスを許可</button>
     </div>
     <div id="screenshotDiv" style="display: none;" class="ctaDiv">
         <div style="position:relative; background-color:white; padding:10px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.25);">
