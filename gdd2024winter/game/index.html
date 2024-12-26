@@ -31,8 +31,8 @@
     <div id="startARDiv" class="ctaDiv" style="background: #2f2e32">
       <select id="chooseCamSel" style="visibility: hidden; background: transparent; border: .05vh solid white; border-radius: max(0.5vw, 0.5vh); color:white; font-size: max(1.5vw, 1.5vh); position: absolute; bottom: 80px" 
         onchange="SelectCam()"></select>
-      <p style="text-align: center; width:min(60vw, 60vh);">このゲームでは、スマホのカメラを使用します。以下のボタンを押して、カメラへのアクセス権限を許可してください。</p>
-      <button id="startARButton" onclick="StartAR()" style="visibility: hidden">アクセスを許可</button>
+      <p style="text-align: center; width:min(60vw, 60vh);">This augmented reality experience requires access to your device's camera</p>
+      <button id="startARButton" onclick="StartAR()" style="visibility: hidden">ALLOW ACCESS</button>
       <br><br><br>
     </div>
     <div id="screenshotDiv" style="visibility: hidden; opacity: 0;" class="ctaDiv">
@@ -138,7 +138,6 @@
       function StartAR() {
         var startARDiv = document.querySelector("#startARDiv");
         startARDiv.style.opacity = 0;
-        document.getElementById("startARButton").style.visibility = "hidden";
         setTimeout(()=>{
           startARDiv.style.visibility = "hidden";
         }, 500);
