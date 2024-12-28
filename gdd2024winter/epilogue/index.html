@@ -7,29 +7,19 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center; /* 中央揃え */
+            background-color: #f9f9f9;
             margin: 0;
             padding: 20px;
-            background-color: #f9f9f9;
+            text-align: center; /* 中央揃え */
         }
-        .x-share-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 10px 15px;
-            color: #fff;
-            background-color: #000;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 16px;
-            margin-top: 20px;
+        .button-container {
+            margin-top: 30px;
         }
-        .x-share-button:hover {
-            background-color: #333;
-        }
-        .x-share-button i {
-            font-size: 20px; /* アイコンのサイズ調整 */
+        .x-share-button img {
+            width: 50%; /* 画像を画面幅の半分に調整 */
+            max-width: 648px; /* 最大幅を設定 */
+            height: auto; /* アスペクト比を維持 */
+            cursor: pointer; /* ポインターを表示してボタンであることを示す */
         }
     </style>
 </head>
@@ -38,28 +28,30 @@
     <img src="epilogue01.png" alt="エピローグ01">
     </p>
 
-    <a 
-        href="https://twitter.com/intent/tweet?text=Congratulations!%20名探偵モモイとすべての謎を解き明かしました！&hashtags=名探偵モモイ&url=https://www.melonbooks.co.jp/detail/detail.php?product_id=2736778"
-        class="x-share-button"
-        target="_blank"
-        rel="noopener noreferrer"
-    >
-        <i class="fab fa-x-twitter"></i> Xでシェア
-    </a>
+    <div class="button-container">
+        <a 
+            href="https://twitter.com/intent/tweet?text=Congratulations!%20名探偵モモイとすべての謎を解き明かしました！&hashtags=名探偵モモイ&url=https://www.melonbooks.co.jp/detail/detail.php?product_id=2736778"
+            class="x-share-button"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <img src="xbutton.png" alt="Xでシェア">
+        </a>
+    </div>
 
-    <script>
-        document.querySelector('.x-share-button').addEventListener('click', function(event) {
-            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            const message = "Congratulations! 名探偵モモイとすべての謎を解き明かしました！ #名探偵モモイ https://www.melonbooks.co.jp/detail/detail.php?product_id=2736778";
+<script>
+    document.querySelector('.x-share-button').addEventListener('click', function(event) {
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        const message = "Congratulations! 名探偵モモイとすべての謎を解き明かしました！ #名探偵モモイ https://www.melonbooks.co.jp/detail/detail.php?product_id=2736778";
 
-            if (/android/i.test(userAgent)) {
-                event.preventDefault();
-                window.location.href = `twitter://post?message=${encodeURIComponent(message)}`;
-            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                event.preventDefault();
-                window.location.href = `twitter://post?message=${encodeURIComponent(message)}`;
-            }
-        });
-    </script>
+        if (/android/i.test(userAgent)) {
+            event.preventDefault();
+            window.location.href = `twitter://post?message=${encodeURIComponent(message)}`;
+        } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            event.preventDefault();
+            window.location.href = `twitter://post?message=${encodeURIComponent(message)}`;
+        }
+    });
+</script>
 </body>
 </html>
