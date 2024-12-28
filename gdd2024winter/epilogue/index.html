@@ -2,16 +2,64 @@
 <html>
 <head>
     <title>エピローグ</title>
-    <style type="text/css">
-        p.resizeimage1 img { width: 100%; }
+     <!-- Font Awesomeの読み込み -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center; /* 中央揃え */
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .x-share-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 15px;
+            color: #fff;
+            background-color: #000;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        .x-share-button:hover {
+            background-color: #333;
+        }
+        .x-share-button i {
+            font-size: 20px; /* アイコンのサイズ調整 */
+        }
     </style>
 </head>
 <body>
     <p class="resizeimage1">
     <img src="epilogue01.png" alt="エピローグ01">
     </p>
-    <p class="resizeimage1">
-    <img src="epilogue02.png" alt="エピローグ02">
-    </p>
+
+    <a 
+        href="https://twitter.com/intent/tweet?text=Congratulations!%20名探偵モモイとすべての謎を解き明かしました！&hashtags=名探偵モモイ&url=https://www.melonbooks.co.jp/detail/detail.php?product_id=2736778"
+        class="x-share-button"
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        <i class="fab fa-x-twitter"></i> Xでシェア
+    </a>
+
+    <script>
+        document.querySelector('.x-share-button').addEventListener('click', function(event) {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            const message = "Congratulations! 名探偵モモイとすべての謎を解き明かしました！ #名探偵モモイ https://www.melonbooks.co.jp/detail/detail.php?product_id=2736778";
+
+            if (/android/i.test(userAgent)) {
+                event.preventDefault();
+                window.location.href = `twitter://post?message=${encodeURIComponent(message)}`;
+            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                event.preventDefault();
+                window.location.href = `twitter://post?message=${encodeURIComponent(message)}`;
+            }
+        });
+    </script>
 </body>
 </html>
