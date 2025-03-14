@@ -1,0 +1,11 @@
+<Files ~ "^\.(htaccess|htpasswd)$">
+deny from all
+</Files>
+Options -Indexes
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^(www\.ogulabo\.com)(:80)? [NC]
+RewriteRule ^(.*) https://ogulabo.com/$1 [R=301,L]
+order deny,allow
+<IfModule mod_mime.c>
+    AddType application/wasm .wasm
+</IfModule>
